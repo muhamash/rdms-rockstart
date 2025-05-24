@@ -36,8 +36,8 @@ SELECT * FROM sightings;
 --solution
 
 --answer 1
-CREATE FUNCTION register_ranger(ranger_name TEXT, ranger_region TEXT)
-RETURNS INTEGER AS $$
+CREATE  FUNCTION register_ranger(ranger_name TEXT, ranger_region TEXT)
+RETURNS TEXT AS $$
 DECLARE
     affected_rows INTEGER;
 BEGIN
@@ -48,14 +48,19 @@ BEGIN
     );
 
     GET DIAGNOSTICS affected_rows = ROW_COUNT;
-    RETURN affected_rows;
+    RETURN 'AffectedRows : ' || affected_rows;
 END;
 $$ LANGUAGE plpgsql;
-
-SELECT register_ranger('Derek Fox', 'Coastal Plains');
+SELECT register_ranger('Derek Fox', ' Plains');
+-- INSERT INTO rangers (name, region) VALUES ('Derek Fox', 'Plains')
 
 --answer 2
 SELECT COUNT(DISTINCT species_id) AS unique_species_count
 FROM sightings;
 
 --answer 3
+SELECT sighting_id, species_id, ranger_id, location, sighting_time, notes
+FROM sightings
+WHERE location ILIKE '%Pass%';
+
+--answer 4
