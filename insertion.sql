@@ -17,7 +17,7 @@ INSERT INTO species (common_name, scientific_name, conservation_status) VALUES
 ('Red Pandasasds', 'Ailurus fssdualgens', 'Vulnerable'),
 ('Asiatic Easlesdphsant', 'Eslesdpashas maximus indicus', 'Endangered');
 INSERT INTO sightings (species_id, ranger_id, location, notes) VALUES
-( 2, 10, 'Peak Ridge', 'Camera trap image captured');
+( 2, 1, 'Peak Ridge', 'Camera trap image captured');
 -- (2, 2, 2, 'Bankwood Area', '2024-05-12 16:20:00', 'Juvenile seen'),
 -- (3, 3, 3, 'Bamboo Grove pass', '2024-05-15 09:10:00', 'Feeding observed'),
 -- (4, 1, 2, 'Snowfall Pass', '2024-05-18 18:30:00', NULL);

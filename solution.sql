@@ -76,7 +76,7 @@ DECLARE
     constraint_def TEXT;
     historic_allowed BOOLEAN := FALSE;
 BEGIN
-    -- Find the check constraint 
+    -- Find the  constraint 
     SELECT conname, pg_get_constraintdef(c.oid)
     INTO constraint_name, constraint_def
     FROM pg_constraint c
@@ -106,6 +106,7 @@ BEGIN
     RETURN affected_rows;
 END;
 $$ LANGUAGE plpgsql;
+
 SELECT update_historic_species_and_constraint();
 
 --answer 8
