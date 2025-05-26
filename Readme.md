@@ -1,4 +1,4 @@
-# Explain the **Primary Key** and **Foreign Key** concepts in PostgreSQL
+# Explaination of the **Primary Key** and **Foreign Key** concepts in PostgreSQL
 ## Primary Key
 `Primary key` uniquely indetifies each rows in a table and it always ensure the data of the column is unique and never be duplicated into another column also it allows us to sequence the data and helps to manage a relational database perfectly.
 
@@ -126,4 +126,54 @@ SELECT LENGTH(name) FROM employees;
 
 ----
 ----
+# Explaination the purpose of the `WHERE` clause in a `SELECT` statement
+
+`WHERE` clause in `sql` is for filtering the data from a table when to retreiving , updating and deleting the records. `WHERE` clause plays important role when to work on specific data. There will be so many tables in a databse including each tables can contain multiple rows and column and data, It filters the `row` based on condition. In `SELECT` caluse we use it when to select a table or specify a table, The `WHERE` clause in a `SELECT` statement it filters the rows from the selected table based on specified conditions than returns the only row which met the specified condition as `TRUE` and filters data down to just based on rows only.
+
+## Example
+#### Table defination and sample data
+
+```sql
+
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  dept_id INT NOT NULL,
+  gpa NUMERIC(3,2)
+);
+
+INSERT INTO students (name, dept_id, gpa) VALUES
+  ('Alice',    1, 3.75),
+  ('Bob',      2, 2.90),
+  ('Charlie',  1, 3.10),
+  ('Diana',    3, 3.95),
+  ('Ethan',    2, 2.50);
+
+````
+### Use case: 
+```sql
+---Select students in department 1
+ SELECT student_id, name, gpa
+ FROM students
+ WHERE dept_id = 1;
+
+---Select students with GPA ≥ 3.00
+ SELECT name, gpa
+ FROM students
+ WHERE gpa >= 3.00;
+
+---Combine filters with AND / OR
+ SELECT name, dept_id, gpa
+ FROM students
+ WHERE dept_id = 2
+ AND gpa < 3.00;
+
+````
+
+> Selected student from dept 1; filtered output: Alice and Charlie only
+> Filtering students based on gpa; output: Alice, Charlie, Diana
+> Combination filtering with conditions; output:  Bob and Ethan
+
+-----
+-----
 
