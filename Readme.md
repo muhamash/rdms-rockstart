@@ -1,4 +1,4 @@
-# Explaination of the **Primary Key** and **Foreign Key** concepts in PostgreSQL
+# 1. Explaination of the **Primary Key** and **Foreign Key** concepts in PostgreSQL
 ## Primary Key
 `Primary key` uniquely indetifies each rows in a table and it always ensure the data of the column is unique and never be duplicated into another column also it allows us to sequence the data and helps to manage a relational database perfectly.
 
@@ -65,7 +65,7 @@ INSERT INTO dept(dept_id, dept_name, employee_id) VALUES (1, 'system', 1), ( 2, 
 -----
 -----
 
-# Difference between the `VARCHAR` and `CHAR` data types
+# 2. Difference between the `VARCHAR` and `CHAR` data types
 
 ## CHAR
 A data type is `sql` which is used to store fixed length data of a string character and stores the character in `n` bytes. It always stores exact `n` bytes of or specified `bytes` of data and if the the data size or length is less than the fixed or specified length `CHAR` wil added extra padded spaces or blank spaces.
@@ -126,7 +126,7 @@ SELECT LENGTH(name) FROM employees;
 
 ----
 ----
-# Explaination the purpose of the `WHERE` clause in a `SELECT` statement
+# 3. Explaination the purpose of the `WHERE` clause in a `SELECT` statement
 
 `WHERE` clause in `sql` is for filtering the data from a table when to retreiving , updating and deleting the records. `WHERE` clause plays important role when to work on specific data. There will be so many tables in a databse including each tables can contain multiple rows and column and data, It filters the `row` based on condition. In `SELECT` caluse we use it when to select a table or specify a table, The `WHERE` clause in a `SELECT` statement it filters the rows from the selected table based on specified conditions than returns the only row which met the specified condition as `TRUE` and filters data down to just based on rows only.
 
@@ -176,4 +176,58 @@ INSERT INTO students (name, dept_id, gpa) VALUES
 
 -----
 -----
+
+# 4. Modify data using `UPDATE` statements
+## UPDATE
+`UPDATE` statement in `sql` allows to modify or update the exsiting rows in a table of a databse. It helps to update the data without inserting new one and let changes one or multiple column.
+
+### Syntex 
+```sql
+UPDATE table_name
+SET column1 = new_value, column2 = new_value, ...
+WHERE condition;
+```
+
+> table_name: The target table
+> SET: Lists one or more column = new_value assignments
+> WHERE: (Optional but almost always needed) Filters which rows to change
+> Without WHERE, every row in the table will be updated
+
+### how to modify the data
+
+```sql
+---Create demo table
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY,
+  name       VARCHAR(50),
+  dept_id    INT,
+  gpa        NUMERIC(3,2)
+);
+
+-- Sample data
+INSERT INTO students (name, dept_id, gpa) VALUES
+  ('Alice',   1, 3.75),
+  ('Bob',     2, 2.90),
+  ('Charlie', 1, 3.10);
+
+---Update Alice gpa
+UPDATE students
+SET gpa = 3.85
+WHERE name = 'Alice';
+
+---Updating multiple column
+UPDATE students
+SET dept_id = 1,
+gpa = 3.20
+WHERE name = 'Bob';
+
+---Updateing multiple rows
+UPDATE students
+SET gpa = gpa + 0.10
+WHERE dept_id = 1;
+
+```
+
+----
+----
 
