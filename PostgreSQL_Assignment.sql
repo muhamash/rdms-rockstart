@@ -32,7 +32,7 @@ CREATE TABLE sightings (
 --solutions
 
 --answer 1
-INSERT INTO rangers (name, region) VALUES ('Derek Fox', 'cc Plain')
+INSERT INTO rangers (name, region) VALUES ('Derek Fox', 'Coastal Plains');
 
 --answer 2
 SELECT COUNT(DISTINCT species_id) AS unique_species_count
