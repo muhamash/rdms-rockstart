@@ -73,7 +73,8 @@ A data type is `sql` which is used to store fixed length data of a string charac
 ### Characteristics
  - Stores the fixed character length of a string data type
  - Always stores  the data is equal to the fixed or specifed length
- - It takes 1 bytes for each character
+ - It takes 1 byte for each character
+ - Best performance
  
 
 ### Example
@@ -96,10 +97,13 @@ SELECT LENGTH(name) FROM employees;
 ```
 
 # VARCHAR
-A data type in `sql` it stores characters of a string variable length with  maximum of set of the fixed length, that means it will allow us to to store maximum length of the input without padded with extra blank spaces. It is equal to the input string length.
+A data type in `sql` it stores characters of a string variable length with  maximum of set of the fixed length, that means it will allow us to store maximum length of the input without padded with extra blank spaces. It is equal to the input string length.
 
 ### Characteristics
-
+- Stores the fixed character length of a input string data type as a variable length.
+- It stores data as variable formate like the exact length of the input string.
+- It is not padded with spaces though it takes 1 byte for each character but also take some bytes for holding the length informations.
+- Less porformance compared to CHAR
 
 ### Example
 ```sql
