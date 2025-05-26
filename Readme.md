@@ -67,6 +67,59 @@ INSERT INTO dept(dept_id, dept_name, employee_id) VALUES (1, 'system', 1), ( 2, 
 
 # Difference between the `VARCHAR` and `CHAR` data types
 
-## VARCHAR
+## CHAR
+A data type is `sql` which is used to store fixed length data of a string character and stores the character in `n` bytes. It always stores exact `n` bytes of or specified `bytes` of data and if the the data size or length is less than the fixed or specified length `CHAR` wil added extra padded spaces or blank spaces.
 
+### Characteristics
+ - Stores the fixed character length of a string data type
+ - Always stores  the data is equal to the fixed or specifed length
+ - It takes 1 bytes for each character
+ 
+
+### Example
+```sql
+
+CREATE TABLE employees (
+  employee_id SERIAL PRIMARY KEY,
+  name CHAR(20) NOT NULL
+);
+
+INSERT INTO employes(employee_id, name) VALUES (1, 'ash'), ( 2, 'mizan bhai');
+SELECT LENGTH(name) FROM employees;
+
+```
+#### output
+```zsh
+    LENGTH(name)
+    20
+    20
+```
+
+# VARCHAR
+A data type in `sql` it stores characters of a string variable length with  maximum of set of the fixed length, that means it will allow us to to store maximum length of the input without padded with extra blank spaces. It is equal to the input string length.
+
+### Characteristics
+
+
+### Example
+```sql
+
+CREATE TABLE employees (
+  employee_id SERIAL PRIMARY KEY,
+  name VARCHAR(20) NOT NULL
+);
+
+INSERT INTO employes(employee_id, name) VALUES (1, 'ash'), ( 2, 'mizan bhai');
+SELECT LENGTH(name) FROM employees;
+
+```
+#### output
+```zsh
+    LENGTH(name)
+    3
+    9
+```
+
+----
+----
 
