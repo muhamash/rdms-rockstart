@@ -193,7 +193,7 @@ WHERE condition;
 > WHERE: (Optional but almost always needed) Filters which rows to change
 > Without WHERE, every row in the table will be updated
 
-### how to modify the data
+### How to modify the data
 
 ```sql
 ---Create demo table
@@ -231,3 +231,43 @@ WHERE dept_id = 1;
 ----
 ----
 
+# 5. The `LIMIT` and `OFFSET` clauses
+
+## `LIMIT`
+
+`LIMIT` clause i used in `sql` to limit the number of rows returned by a query. It can used with the SELECT statement and can be very useful in large databases when needed a subset of the data from the database. It specifies the maximum number of rows to return and preserve query performance, optimize resource utilization, enforce security and privacy policies, and enhance usability on large tables.
+
+### Syntex 
+```sql
+SELECT column1, column2, ...
+FROM table LIMIT number_of_rows
+```
+### Usage
+- Pagination
+- Retrieving top records , etc
+
+## `OFFSET`
+`OFFSET` allows to skip a specified number of rows before returning the results fo the query.
+
+### Syntex
+```sql
+OFFSET <skip_count>;
+```
+
+### Usage
+- To skip specified rows before returning the query result
+- Chunk Processing
+
+
+### Combining `LIMIT` + `OFFSET`
+
+`LIMIT` and `OFFSET` are often used together to achieve pagination, where you retrieve data in `pages`. `LIMIT` specifies how many rows to return on query while `OFFSET` indicates how many rows to skip and improving usability and performance. OFFSET changes the starting point of results, allowing for more flexible data retrieval. We can group and ordered the data that allows more accesable. 
+
+### Usage Example
+```sql
+SELECT student_id, name
+  FROM students
+ ORDER BY student_id
+ OFFSET 20   ---skip the first two pages (2×10 rows)
+ LIMIT 10;   ---return the next 10 rows (rows 21–30)
+```
